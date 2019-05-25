@@ -229,7 +229,7 @@ class FileCopy(object):
 
         self.remote_dir_exists = True
 
-    def transfer_file(self, hostname=None, username=None, password=None):
+    def transfer_file(self, hostname=None, username=None, password=None, allow_agent=False, look_for_keys=False):
         """Transfer the file to the remote device over SCP.
 
         Note:
@@ -265,8 +265,8 @@ class FileCopy(object):
             username=username,
             password=password,
             port=self.port,
-            allow_agent=False,
-            look_for_keys=False)
+            allow_agent=allow_agent,
+            look_for_keys=look_for_keys)
 
         scp = SCPClient(ssh.get_transport())
         try:
