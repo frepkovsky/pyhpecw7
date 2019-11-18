@@ -248,6 +248,16 @@ class FileNotEnoughSpaceError(FileError):
     __str__ = __repr__
 
 
+class FileTransferUnsupportedProtocol(FileError):
+    def __init__(self, proto):
+        self.proto = proto
+
+    def __repr__(self):
+        return self.proto
+
+    __str__ = __repr__
+
+
 class FileTransferError(FileError):
     def __repr__(self):
         return 'There was an error while the file was in transit.'
