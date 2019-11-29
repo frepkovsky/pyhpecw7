@@ -81,7 +81,7 @@ class InstallOs(object):
         return image_dict
 
     def build(self, os_type, ipe=None, boot=None, system=None,
-              delete_ipe=False, stage=False):
+              startup_type='1', delete_ipe=False, stage=False):
         """Stage or execute the configuration commands
         for changing the primary startup image.
 
@@ -94,6 +94,10 @@ class InstallOs(object):
                 - The full path of the remote boot .bin file.
             system (str): REQUIRED if ``os_type`` is 'bootsys'
                 - The full path of the remote system .bin file.
+            startup_type (str): OPTIONAL - os image startup type:
+                - '1' (main startup os image)
+                - '2' (backup startup os image)
+                Defaults to '1'.
             delete_ipe (bool): OPTIONAL - Whether to delete the remote IPE file
                 after config change. Defaults to ``False``.
             stage (bool): whether to stage the commands or execute
@@ -119,7 +123,7 @@ class InstallOs(object):
         top = E.top(
             E.Package(
                 E.SetBootImage(
-                    E.Type('1'),
+                    E.Type(startup_type),
                     E.OverwriteLocalFile('false'),
                     *params
                 )
