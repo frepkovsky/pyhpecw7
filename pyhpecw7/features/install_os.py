@@ -105,26 +105,24 @@ class InstallOs(object):
         """
         E = action_element_maker()
 
-        ipe_params = []
-        boot_sys_params = []
+        params = []
         if os_type == 'ipe':
-            ipe_params.append(E.IPEFileName(ipe))
-            ipe_params.append(E.DeleteIPEFile(str(delete_ipe).lower()))
+            params.append(E.IPEFileName(ipe))
+            params.append(E.DeleteIPEFile(str(delete_ipe).lower()))
         elif os_type == 'bootsys':
             boot_sys_ele = E.ImageFiles(
                 E.Boot(boot),
                 E.System(system)
             )
-            boot_sys_params.append(boot_sys_ele)
+            params.append(boot_sys_ele)
 
         top = E.top(
             E.Package(
                 E.SetBootImage(
                     E.Type('1'),
                     E.OverwriteLocalFile('false'),
-                    *ipe_params
-                ),
-                *boot_sys_params
+                    *params
+                )
             )
         )
 
