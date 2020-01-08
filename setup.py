@@ -1,15 +1,16 @@
-from distutils.core import setup
+
+from setuptools import setup
 from setuptools import find_packages
 
 setup(
   name='pyhpecw7',
   packages=find_packages(),
-  version='0.0.11',
+  version='0.0.12',
   description='Python package to simplify working with HPE Comware7 Based devices ',
   author='HPE',
   license='Apache2',
-  url='https://github.com/hpenetworking/pyhpecw7',
-  download_url='https://github.com/hpenetworking/pyhpecw7/tarball/0.0.9',
+  url='https://github.com/frepkovsky/pyhpecw7',
+  download_url='https://github.com/frepkovsky/pyhpecw7/tarball/0.0.12',
   classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha
