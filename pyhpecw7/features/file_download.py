@@ -9,7 +9,7 @@ import paramiko
 import hashlib
 import os
 
-class FileUpload(object):
+class FileDownload(object):
     """This class is used to download file from ``HPCOM7`` device.
 
     Note:
